@@ -27,7 +27,7 @@ To install and run the DoSeR disambiguation systems, the following components mu
 
 4. Open the Word2VecRest.py and adapt the Word2Vec and Doc2vec model links.
 
-5. Start the Word2VecRest.py (This starts the Word2Vec query server at http://127.0.0.1 by default) 
+5. Start the Word2VecRest.py (This starts the Word2Vec query server at http://127.0.0.1:5000 by default) 
     python Word2VecRest.py
 
 6. Open and adapt the disambiguation.properties file
@@ -52,3 +52,6 @@ If you use DoSeR in your research, please cite the following paper:
     biburl    = {http://dblp.uni-trier.de/rec/bib/conf/esws/ZwicklbauerSG16},
     bibsource = {dblp computer science bibliography, http://dblp.org}
     }
+
+##Contact
+If you have further question, please ask stefan.zwicklbauer@uni-passau.de
