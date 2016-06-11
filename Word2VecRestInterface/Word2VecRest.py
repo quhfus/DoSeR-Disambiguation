@@ -190,7 +190,7 @@ class GunicornApplication(BaseApplication):
     def __init__(self, wsgi_app, port=5000):
 	self.options = {
             'bind': "127.0.0.1:{port}".format(port=port),
-             'workers': 1,
+             'workers': 5,
              'preload_app': True,
 	     'timeout': 200,
         }
