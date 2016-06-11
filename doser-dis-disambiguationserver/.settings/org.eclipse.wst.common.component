@@ -7,6 +7,9 @@
         <dependent-module archiveName="doser-dis-core-0.6.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/doser-dis-core/doser-dis-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="doser-dis-extensions-0.6.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/doser-dis-extensions/doser-dis-extensions">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/de.uop.code-disambiguationserver/target/classes"/>
         <property name="context-root" value="doser-dis-disambiguationserver"/>
     </wb-module>
