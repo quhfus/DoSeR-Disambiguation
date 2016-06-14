@@ -19,16 +19,13 @@ To install and run the DoSeR disambiguation systems, the following components mu
 4. Semantic Embeddings: [Dropbox Link](https://www.dropbox.com/s/4e2g72yud1muv5a/Semantic_Embeddings.tar.gz?dl=0)
 
 ##Installation
-1. Checkout the DoSeR-Disambiguation Github repository and install the system with mvn compile. If no maven is installed or if you are not interested in the source code one can download the doser-dis-disambiguationserver.jar file and disambiguation.properties file from here.  
+1. Checkout the DoSeR-Disambiguation Github repository and install the system with **mvn compile**. If no maven is installed or if you are not interested in the source code you can download the doser-dis-disambiguationserver.jar file and disambiguation.properties file from here (coming very soon).  
 
-2. Put the resulting or downloaded jar file and the properties file into a newly created directory **foo**. Unzip the Disambiguation Index and put the index folder into the **foo** directory.
+2. Put the resulting or downloaded **doser-dis-disambiguationserver.jar** file and the properties file into a newly created directory **foo**. Unzip the Disambiguation Index and put the index folder into the **foo** directory.
 
-3. Unzip and extract the Semantic Embeddings zip file
+3. Unzip and extract the Semantic Embeddings zip file into any folder.
 
-4. Open the Word2VecRest.py and adapt the Word2Vec and Doc2vec model links.
-
-5. Start the Word2VecRest.py (This starts the Word2Vec query server at http://127.0.0.1:5000 by default) 
-    python Word2VecRest.py
+4. Install and start the Word2Vec Rest Server (Installation guide can be found [here](https://github.com/quhfus/DoSeR-Disambiguation/wiki/Word2Vec-RestServer))
 
 6. Open and adapt the disambiguation.properties file
 
@@ -52,6 +49,3 @@ If you use DoSeR in your research, please cite the following paper:
     biburl    = {http://dblp.uni-trier.de/rec/bib/conf/esws/ZwicklbauerSG16},
     bibsource = {dblp computer science bibliography, http://dblp.org}
     }
-
-##Contact
-If you have further question, please ask stefan.zwicklbauer@uni-passau.de

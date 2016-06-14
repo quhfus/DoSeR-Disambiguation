@@ -27,7 +27,7 @@
 
 		<dependency>
 			<groupId>doser.sub</groupId>
-			<artifactId>doser-extensions</artifactId>
+			<artifactId>doser-dis-extensions</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
