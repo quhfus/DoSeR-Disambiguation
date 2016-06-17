@@ -17,8 +17,8 @@ import java.util.List;
 public class Response {
 
 	private List<DisambiguatedEntity> disEntities;
-	private int startPosition;
 	private String selectedText;
+	private int documentId;
 
 	public Response() {
 		super();
@@ -41,11 +41,11 @@ public class Response {
 		this.selectedText = selectedText;
 	}
 
-	public int getStartPosition() {
-		return startPosition;
+	public int getDocumentId() {
+		return documentId;
 	}
 
-	public void setStartPosition(int startPosition) {
-		this.startPosition = startPosition;
+	public void setDocumentId(int documentId) {
+		this.documentId = documentId;
 	}
 }

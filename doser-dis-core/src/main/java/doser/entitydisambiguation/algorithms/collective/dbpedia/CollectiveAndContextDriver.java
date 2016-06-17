@@ -52,7 +52,7 @@ class CollectiveAndContextDriver {
 		rules.addContextRule(eckb);
 		rules.performRuleChainBeforeCandidateSelection(rep);
 
-		CandidateReductionDBpediaW2V w2vreduction = new CandidateReductionDBpediaW2V(eckb, rep, 20, 5, 125, false, false);
+		CandidateReductionDBpediaW2V w2vreduction = new CandidateReductionDBpediaW2V(eckb, rep, 20, 5, 150, false, false);
 		w2vreduction.solve();
 		rep = w2vreduction.getRep();
 
@@ -72,10 +72,8 @@ class CollectiveAndContextDriver {
 				List<DisambiguatedEntity> entList = new LinkedList<DisambiguatedEntity>();
 				DisambiguatedEntity ent = new DisambiguatedEntity();
 				ent.setEntityUri(r.getCandidates().get(0));
-				ent.setText("ToDoText");
 				entList.add(ent);
 				res.setDisEntities(entList);
-				res.setStartPosition(-1);
 				res.setSelectedText(r.getSurfaceForm());
 				currentResponse[i] = res;
 			}

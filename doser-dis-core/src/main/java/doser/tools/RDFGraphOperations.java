@@ -16,7 +16,6 @@ import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.Model;
 
 import doser.entitydisambiguation.backend.DisambiguationMainService;
-import doser.entitydisambiguation.dpo.Type;
 
 public final class RDFGraphOperations {
 

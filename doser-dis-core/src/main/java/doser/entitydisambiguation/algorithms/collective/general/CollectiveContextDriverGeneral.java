@@ -55,10 +55,8 @@ class CollectiveContextDriverGeneral {
 				List<DisambiguatedEntity> entList = new LinkedList<DisambiguatedEntity>();
 				DisambiguatedEntity ent = new DisambiguatedEntity();
 				ent.setEntityUri(r.getCandidates().get(0));
-				ent.setText("ToDoText");
 				entList.add(ent);
 				res.setDisEntities(entList);
-				res.setStartPosition(-1);
 				res.setSelectedText(r.getSurfaceForm());
 				currentResponse[i] = res;
 			}

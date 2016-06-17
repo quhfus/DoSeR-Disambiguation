@@ -27,6 +27,12 @@ public class DisambiguationService {
 		super();
 	}
 
+	/**
+	 * Testing
+	 * 
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/disambiguateWithoutCategories-single", method = RequestMethod.POST, headers = "Accept=application/json")
 	public @ResponseBody DisambiguationResponse annotateSingle(@RequestBody final DisambiguationRequest request) {
 		DisambiguationResponse annotationResponse = disambiguateSingle(request);
@@ -50,7 +56,6 @@ public class DisambiguationService {
 			mainService.disambiguate(tasks);
 
 			List<Response> responses = collectiveTask.getResponse();
-			System.out.println("CALLUP" + responses);
 			response.setTasks(responses);
 			response.setDocumentUri(request.getDocumentUri());
 		}

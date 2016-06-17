@@ -68,13 +68,11 @@ public class CollectiveDisambiguationDBpediaEntities extends AbstractDisambiguat
 
 	@Override
 	public void processAlgorithm() {
-		AdditionalCandidateQuery aq = new AdditionalCandidateQuery(eckb);
+//		AdditionalCandidateQuery aq = new AdditionalCandidateQuery(eckb);
 		List<EntityDisambiguationDPO> entityList = task.getEntityToDisambiguate();
 		Response[] responseArray = new Response[entityList.size()];
 
 		List<SurfaceForm> collectiveRep = new LinkedList<SurfaceForm>();
-		System.out.println(
-				"---------------------------------------------------------------------------------------------------------------------------");
 		for (int i = 0; i < entityList.size(); i++) {
 			EntityDisambiguationDPO dpo = entityList.get(i);
 			// Dieser Fix sollte irgendwo anders passieren. TODO Auslagern
@@ -91,7 +89,7 @@ public class CollectiveDisambiguationDBpediaEntities extends AbstractDisambiguat
 					SurfaceForm col = new SurfaceForm(dpo.getSelectedText(), dpo.getContext(), l, i,
 							dpo.getStartPosition());
 					collectiveRep.add(col);
-					System.out.println("Save Disambiguation: " + "" + "    " + dpo.getSelectedText());
+//					System.out.println("Save Disambiguation: " + "" + "    " + dpo.getSelectedText());
 				} else if (score.length == 1) {
 					final Document doc = reader.document(score[0].doc);
 					ArrayList<String> l = new ArrayList<String>();
@@ -100,7 +98,7 @@ public class CollectiveDisambiguationDBpediaEntities extends AbstractDisambiguat
 							dpo.getStartPosition());
 					col.setInitial(true);
 					collectiveRep.add(col);
-					System.out.println("Save Disambiguation: " + doc.get("Mainlink") + "    " + dpo.getSelectedText());
+//					System.out.println("Save Disambiguation: " + doc.get("Mainlink") + "    " + dpo.getSelectedText());
 
 				} else if (score.length > 1) {
 					ArrayList<String> l = new ArrayList<String>();
@@ -123,13 +121,6 @@ public class CollectiveDisambiguationDBpediaEntities extends AbstractDisambiguat
 			}
 		}
 
-		for (SurfaceForm sf : collectiveRep) {
-			if (sf.getSurfaceForm().equalsIgnoreCase("Sprint Communications Co")) {
-				List<String> candidates = new ArrayList<String>();
-				sf.setCandidates(candidates);
-			}
-		}
-
 		// AlgorithmDriver solver = new CollectiveOnlyDriver(
 		// responseArray, collectiveRep, eckb);
 		CollectiveAndContextDriver solver = new CollectiveAndContextDriver(responseArray, collectiveRep, eckb, task.getMainTopic());
@@ -142,6 +133,13 @@ public class CollectiveDisambiguationDBpediaEntities extends AbstractDisambiguat
 		eckb.release();
 	}
 
+	/**
+	 * Methods exist three times - bad programming
+	 * ToDo - Fix it
+	 * 
+	 * @param responseArray
+	 * @param cols
+	 */
 	void generateResult(Response[] responseArray, List<SurfaceForm> cols) {
 		for (int i = 0; i < responseArray.length; i++) {
 			SurfaceForm r = search(i, cols);
@@ -150,10 +148,8 @@ public class CollectiveDisambiguationDBpediaEntities extends AbstractDisambiguat
 				List<DisambiguatedEntity> entList = new LinkedList<DisambiguatedEntity>();
 				DisambiguatedEntity ent = new DisambiguatedEntity();
 				ent.setEntityUri(r.getCandidates().get(0));
-				ent.setText("ToDoText");
 				entList.add(ent);
 				res.setDisEntities(entList);
-				res.setStartPosition(-1);
 				res.setSelectedText(r.getSurfaceForm());
 				responseArray[i] = res;
 			}

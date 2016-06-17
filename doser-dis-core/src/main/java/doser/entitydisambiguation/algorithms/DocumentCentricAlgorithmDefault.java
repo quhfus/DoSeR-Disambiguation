@@ -81,20 +81,9 @@ public class DocumentCentricAlgorithmDefault extends AbstractDisambiguationAlgor
 				final List<DisambiguatedEntity> disEntityList = new LinkedList<DisambiguatedEntity>();
 				final DisambiguatedEntity disEntity = new DisambiguatedEntity();
 				disEntity.setEntityUri("http://dbpedia.org/resource/Number");
-				disEntity.setText("Number");
-				disEntity
-						.setDescription("A number is a mathematical object used to count, label, and measure. In mathematics, the definition of number has been extended over the years to include such numbers "
-								+ "as zero, negative numbers, rational numbers, irrational numbers, and complex numbers. Mathematical operations are certain procedures that take one or more numbers as input and"
-								+ " produce a number as output. Unary operations take a single input number and produce a single output number. For example, the successor operation adds one to an integer, thus "
-								+ "the successor of 4 is 5. Binary operations take two input numbers and produce a single output number. Examples of binary operations include addition, subtraction, "
-								+ "multiplication, division, and exponentiation. The study of numerical operations is called arithmetic. A notational symbol that represents a number is called a numeral. "
-								+ "In addition to their use in counting and measuring, numerals are often used for labels, for ordering, and for codes. In common usage, the word number can mean the abstract "
-								+ "object, the symbol, or the word for the number.");
-				disEntity.setConfidence(1);
 				disEntityList.add(disEntity);
 				Response response = new Response();
 				response.setSelectedText(toDis.getSelectedText());
-				response.setStartPosition(toDis.getStartPosition());
 				response.setDisEntities(disEntityList);
 				List<Response> resList = new LinkedList<Response>();
 				resList.add(response);
@@ -137,16 +126,12 @@ public class DocumentCentricAlgorithmDefault extends AbstractDisambiguationAlgor
 			for (int i = 0; i < task.getReturnNr(); i++) {
 				Entry<String, Integer> entry = vals.get(i);
 				final DisambiguatedEntity entity = new DisambiguatedEntity();
-				entity.setConfidence(entry.getValue());
 				entity.setEntityUri(entry.getKey());
-				entity.setText("Unknown");
-				entity.setDescription("Unknown");
 				disList.add(entity);
 			}
 
 			Response response = new Response();
 			response.setSelectedText(dpo.getSelectedText());
-			response.setStartPosition(dpo.getStartPosition());
 			response.setDisEntities(disList);
 			List<Response> resList = new LinkedList<Response>();
 			resList.add(response);
