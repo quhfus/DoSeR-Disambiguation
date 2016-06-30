@@ -1,9 +1,8 @@
 #DoSeR-Disambiguation
 This package exclusively contains the disambiguation system of DoSeR. Compilation results in a Stand-alone jar file which starts an Apache Tomcat Server. More infos about the full DoSeR systems can be found here: [Github Wiki](https://github.com/quhfus/DoSeR/wiki) 
 
-If your system does not have enough system memory (25GB Ram), you can use the the rest service of the current DoSeR version which is applicable for GERBIL.
+If your system does not have enough system memory (25GB Ram), you can use the the rest service of the current DoSeR version which is applicable for GERBIL. **Coming soon**
 
-   http://zaire.dimis.fim.uni-passau.de:8999/doser-gerbilrest/doserwrapper
 
 We note that this service is limited to 5 queries in parallel.
 
