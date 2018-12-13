@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Set;
 
 import org.apache.http.Header;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.ContentType;
 import org.apache.http.message.BasicHeader;
@@ -16,6 +17,8 @@ import org.slf4j.LoggerFactory;
 
 import doser.entitydisambiguation.properties.Properties;
 import doser.tools.ServiceQueries;
+
+import static doser.tools.ServiceQueries.httpPostRequest;
 
 public class Word2VecJsonFormat {
 
@@ -42,6 +45,7 @@ public class Word2VecJsonFormat {
 
 	public static JSONArray performquery(Object json, String serviceEndpoint) {
 		final ObjectMapper mapper = new ObjectMapper();
+		final Properties config = Properties.getInstance();
 		String jsonString = null;
 		JSONArray result = null;
 		try {
@@ -50,8 +54,11 @@ public class Word2VecJsonFormat {
 					new BasicHeader("content-type", "application/json") };
 			ByteArrayEntity ent = new ByteArrayEntity(jsonString.getBytes(),
 					ContentType.create("application/json"));
-			String resStr = ServiceQueries.httpPostRequest(
-					(Properties.getInstance().getWord2VecService() + serviceEndpoint), ent, headers);
+			String resStr = httpPostRequest(
+					(config.getWord2VecService() + serviceEndpoint),
+					ent,
+					headers,
+					new UsernamePasswordCredentials(config.getWord2VecServiceCredentials()));
 			JSONObject resultJSON = null;
 			try {
 				resultJSON = new JSONObject(resStr);

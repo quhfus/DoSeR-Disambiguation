@@ -5,9 +5,13 @@ import java.io.IOException;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.AbstractHttpEntity;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
@@ -22,8 +26,12 @@ import org.apache.log4j.Logger;
 public class ServiceQueries {
 
 	public static String httpPostRequest(String uri, AbstractHttpEntity entity,
-			Header[] header) {
+			Header[] header, UsernamePasswordCredentials credentials) {
+		CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+		credentialsProvider.setCredentials(AuthScope.ANY, credentials);
+		
 		DefaultHttpClient httpclient = new DefaultHttpClient();
+		httpclient.setCredentialsProvider(credentialsProvider);
 		HttpPost httppost = new HttpPost(uri);
 		httppost.setHeaders(header);
 		httppost.setEntity(entity);
