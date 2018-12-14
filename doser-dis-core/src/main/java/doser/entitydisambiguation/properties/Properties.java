@@ -90,7 +90,11 @@ public final class Properties {
 		return bool;
 	}
 
-	public String getWord2VecServiceCredentials() {
-		return System.getenv("W2V_USERNAME") + ":" + System.getenv("W2V_PASSWORD");
+	public String getWord2VecServiceUsername() {
+		return System.getenv("W2V_USERNAME");
+	}
+	
+	public String getWord2VecServicePassword() {
+		return System.getenv("W2V_PASSWORD");
 	}	
 }

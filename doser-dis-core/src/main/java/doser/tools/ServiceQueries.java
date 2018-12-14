@@ -1,17 +1,14 @@
 package doser.tools;
 
 import java.io.IOException;
+import java.util.Base64;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.AbstractHttpEntity;
-import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
@@ -26,15 +23,15 @@ import org.apache.log4j.Logger;
 public class ServiceQueries {
 
 	public static String httpPostRequest(String uri, AbstractHttpEntity entity,
-			Header[] header, UsernamePasswordCredentials credentials) {
-		CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-		credentialsProvider.setCredentials(AuthScope.ANY, credentials);
-		
+			Header[] header, String username, String password) {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
-		httpclient.setCredentialsProvider(credentialsProvider);
 		HttpPost httppost = new HttpPost(uri);
 		httppost.setHeaders(header);
 		httppost.setEntity(entity);
+		
+		final String userPassword = username + ":" + password;
+		byte[] encodeBase64 = Base64.getEncoder().encode(userPassword.getBytes());
+		httppost.addHeader("Authorization", "BASIC " + new String(encodeBase64));
 
 		HttpResponse response;
 		StringBuffer buffer = new StringBuffer();
@@ -44,7 +41,6 @@ public class ServiceQueries {
 
 			buffer.append(EntityUtils.toString(ent));
 			httpclient.getConnectionManager().shutdown();
-
 		} catch (ClientProtocolException e) {
 			Logger.getRootLogger().error("HTTPClient error", e);
 		} catch (IOException e) {
