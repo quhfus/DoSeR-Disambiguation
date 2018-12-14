@@ -1,7 +1,6 @@
 package doser.tools;
 
 import java.io.IOException;
-import java.util.Base64;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -22,17 +21,12 @@ import org.apache.log4j.Logger;
  */
 public class ServiceQueries {
 
-	public static String httpPostRequest(String uri, AbstractHttpEntity entity,
-			Header[] header, String username, String password) {
+	public static String httpPostRequest(String uri, AbstractHttpEntity entity, Header[] header) {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(uri);
 		httppost.setHeaders(header);
 		httppost.setEntity(entity);
-		
-		final String userPassword = username + ":" + password;
-		byte[] encodeBase64 = Base64.getEncoder().encode(userPassword.getBytes());
-		httppost.addHeader("Authorization", "BASIC " + new String(encodeBase64));
-
+				
 		HttpResponse response;
 		StringBuffer buffer = new StringBuffer();
 		try {
