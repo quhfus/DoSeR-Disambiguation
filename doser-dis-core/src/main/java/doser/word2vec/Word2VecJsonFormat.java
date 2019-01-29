@@ -1,6 +1,9 @@
 package doser.word2vec;
 
+import static doser.tools.ServiceQueries.httpPostRequest;
+
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Set;
 
 import org.apache.http.Header;
@@ -15,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import doser.entitydisambiguation.properties.Properties;
-import doser.tools.ServiceQueries;
 
 public class Word2VecJsonFormat {
 
@@ -45,13 +47,20 @@ public class Word2VecJsonFormat {
 		String jsonString = null;
 		JSONArray result = null;
 		try {
+			final String userPassword = getConfig().getWord2VecServiceUsername() + ":" + getConfig().getWord2VecServicePassword();
+			byte[] encodeBase64 = Base64.getEncoder().encode(userPassword.getBytes());
+
 			jsonString = mapper.writeValueAsString(json);
-			Header[] headers = { new BasicHeader("Accept", "application/json"),
-					new BasicHeader("content-type", "application/json") };
+			Header[] headers = {
+					new BasicHeader("Authorization", "BASIC " + new String(encodeBase64)),
+					new BasicHeader("Accept", "application/json"),
+					new BasicHeader("content-type", "application/json")};
 			ByteArrayEntity ent = new ByteArrayEntity(jsonString.getBytes(),
 					ContentType.create("application/json"));
-			String resStr = ServiceQueries.httpPostRequest(
-					(Properties.getInstance().getWord2VecService() + serviceEndpoint), ent, headers);
+			String resStr = httpPostRequest(
+					(getConfig().getWord2VecService() + serviceEndpoint),
+					ent,
+					headers);
 			JSONObject resultJSON = null;
 			try {
 				resultJSON = new JSONObject(resStr);
@@ -63,5 +72,9 @@ public class Word2VecJsonFormat {
 			logger.error("JsonException in "+Word2VecJsonFormat.class.getName(), e);
 		}
 		return result;
+	}
+
+	private static Properties getConfig() {
+		return Properties.getInstance();
 	}
 }

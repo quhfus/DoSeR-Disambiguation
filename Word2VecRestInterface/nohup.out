@@ -1,0 +1,22 @@
+2019-01-02 23:20:45,396 : INFO : loading projection weights from /datassd/doser-server/WikiEntityModel_400_neg10_iter5.seq
+2019-01-02 23:23:54,660 : INFO : loaded (5053821, 400) matrix from /datassd/doser-server/WikiEntityModel_400_neg10_iter5.seq
+2019-01-02 23:23:54,661 : INFO : precomputing L2-norms of word weight vectors
+2019-01-02 23:24:41,594 : INFO : loading Doc2Vec object from /datassd/doser-server/doc2vec/Wiki_Standard_Model/doc2vec_wiki_model.d2v
+2019-01-02 23:25:17,216 : INFO : loading docvecs recursively from /datassd/doser-server/doc2vec/Wiki_Standard_Model/doc2vec_wiki_model.d2v.docvecs.* with mmap=r
+2019-01-02 23:25:17,216 : INFO : loading doctag_syn0 from /datassd/doser-server/doc2vec/Wiki_Standard_Model/doc2vec_wiki_model.d2v.docvecs.doctag_syn0.npy with mmap=r
+2019-01-02 23:25:17,259 : INFO : loading syn0 from /datassd/doser-server/doc2vec/Wiki_Standard_Model/doc2vec_wiki_model.d2v.syn0.npy with mmap=r
+2019-01-02 23:25:17,270 : INFO : loading syn1 from /datassd/doser-server/doc2vec/Wiki_Standard_Model/doc2vec_wiki_model.d2v.syn1.npy with mmap=r
+2019-01-02 23:25:17,279 : INFO : setting ignored attribute syn0norm to None
+2019-01-02 23:25:17,279 : INFO : setting ignored attribute cum_table to None
+[2019-01-02 23:25:17 +0000] [7544] [INFO] Starting gunicorn 19.3.0
+[2019-01-02 23:25:17 +0000] [7544] [INFO] Listening at: http://127.0.0.1:5000 (7544)
+[2019-01-02 23:25:17 +0000] [7544] [INFO] Using worker: sync
+[2019-01-02 23:25:17 +0000] [7832] [INFO] Booting worker with pid: 7832
+[2019-01-02 23:25:17 +0000] [7833] [INFO] Booting worker with pid: 7833
+[2019-01-02 23:25:18 +0000] [7834] [INFO] Booting worker with pid: 7834
+2019-01-02 23:40:25,679 : INFO : callup
+[2019-01-03 00:16:20 +0000] [7832] [INFO] Worker exiting (pid: 7832)
+[2019-01-03 00:16:20 +0000] [7544] [INFO] Handling signal: term
+[2019-01-03 00:16:20 +0000] [7833] [INFO] Worker exiting (pid: 7833)
+[2019-01-03 00:16:20 +0000] [7834] [INFO] Worker exiting (pid: 7834)
+[2019-01-03 00:16:20 +0000] [7544] [INFO] Shutting down: Master

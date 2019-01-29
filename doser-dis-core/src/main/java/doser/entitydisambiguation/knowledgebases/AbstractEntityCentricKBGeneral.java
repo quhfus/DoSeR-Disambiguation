@@ -139,6 +139,7 @@ public abstract class AbstractEntityCentricKBGeneral extends EntityCentricKnowle
 				format.addData(doc);
 //			}
 		}
+		format.setDomain(generateDomainName());
 		JSONArray res = Word2VecJsonFormat.performquery(format, "d2vsim");
 
 		// We obtain the same order of surface forms

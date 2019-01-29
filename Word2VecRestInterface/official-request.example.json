@@ -1,0 +1,15 @@
+{
+    "documentUri":"https://en.wikipedia.org/wiki/Washington,_D.C.", 
+    "surfaceFormsToDisambiguate": [ 
+    {
+        "selectedText":"Washington, D.C.",
+        "context":"Washington, D.C., formally the District of Columbia and commonly referred to as Washington, the District, or simply D.C., is the capital of the United States. The signing of the Residence Act on July 16, 1790, approved the creation of a capital district located along the Potomac River on the country's East Coast. The U.S. Constitution provided for a federal district under the exclusive jurisdiction of the Congress and the District is therefore not a part of any U.S. state.",
+        "startPosition": 0
+    }, 
+{
+        "selectedText":"United States",
+        "context":"Washington, D.C., formally the District of Columbia and commonly referred to as Washington, the District, or simply D.C., is the capital of the United States. The signing of the Residence Act on July 16, 1790, approved the creation of a capital district located along the Potomac River on the country's East Coast. The U.S. Constitution provided for a federal district under the exclusive jurisdiction of the Congress and the District is therefore not a part of any U.S. state.",
+        "startPosition": 144
+    }
+  ]
+}

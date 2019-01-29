@@ -1,0 +1,9 @@
+{
+    "surfaceFormsToDisambiguate": [ 
+    {
+        "selectedText": "Wright",
+	"context":"The brothers' fundamental breakthrough was their invention of three-axis control, which enabled the pilot to steer the aircraft effectively and to maintain its equilibrium.[4][5][6][7] This method became and remains standard on fixed-wing aircraft of all kinds.[8][9] From the beginning of their aeronautical work, the Wright brothers focused on developing a reliable method of pilot control as the key to solving \"the flying problem\".",
+        "startPosition": 319
+    }
+  ]
+}
