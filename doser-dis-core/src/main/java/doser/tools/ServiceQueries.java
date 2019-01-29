@@ -21,13 +21,12 @@ import org.apache.log4j.Logger;
  */
 public class ServiceQueries {
 
-	public static String httpPostRequest(String uri, AbstractHttpEntity entity,
-			Header[] header) {
+	public static String httpPostRequest(String uri, AbstractHttpEntity entity, Header[] header) {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(uri);
 		httppost.setHeaders(header);
 		httppost.setEntity(entity);
-
+				
 		HttpResponse response;
 		StringBuffer buffer = new StringBuffer();
 		try {
@@ -36,7 +35,6 @@ public class ServiceQueries {
 
 			buffer.append(EntityUtils.toString(ent));
 			httpclient.getConnectionManager().shutdown();
-
 		} catch (ClientProtocolException e) {
 			Logger.getRootLogger().error("HTTPClient error", e);
 		} catch (IOException e) {

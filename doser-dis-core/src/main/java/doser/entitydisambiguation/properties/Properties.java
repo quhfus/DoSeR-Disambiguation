@@ -88,5 +88,13 @@ public final class Properties {
 			bool = true;
 		}
 		return bool;
+	}
+
+	public String getWord2VecServiceUsername() {
+		return System.getenv("W2V_USERNAME");
+	}
+	
+	public String getWord2VecServicePassword() {
+		return System.getenv("W2V_PASSWORD");
 	}	
 }
