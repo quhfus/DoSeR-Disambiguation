@@ -122,6 +122,9 @@ class Word2VecRest(Flask):
 
 w2v = Word2VecRest(__name__)
 
+@w2v.route("/healthcheck")
+def hello():
+    return "Success"
 
 @w2v.route('/w2vsim', methods = ['POST'])
 def w2vsim():
@@ -188,7 +191,7 @@ class GunicornApplication(BaseApplication):
     #If no doc2vec embeddings are loaded (due to memory constraints), we always return 0 as cosine similarity
     wiki_d2v_embeddings_file = parser.get('Word2VecRest', 'embeddings_d2v_wikipedia')
     if os.path.isfile(wiki_d2v_embeddings_file):
-        d2vmodel = Doc2Vec.load(wiki_d2v_embeddings_file)
+        d2vmodel = Doc2Vec.load(wiki_d2v_embeddings_file, mmap='r')
     else :
         d2vmodel = None
 
@@ -199,7 +202,7 @@ class GunicornApplication(BaseApplication):
 
     wiki_d2v_german_embeddings = parser.get('Word2VecRest', 'embeddings_d2v_wikipedia_german')
     if os.path.isfile(wiki_d2v_german_embeddings):
-        d2vmodel_german = Doc2Vec.load(wiki_d2v_german_embeddings)
+        d2vmodel_german = Doc2Vec.load(wiki_d2v_german_embeddings, mmap='r')
     
     def __init__(self, wsgi_app, port=5000):
 	self.options = {

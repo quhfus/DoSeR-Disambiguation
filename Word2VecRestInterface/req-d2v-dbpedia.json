@@ -1,0 +1,9 @@
+{
+"domain":"DBpedia",
+"data":[{
+"surfaceForm":"Ada Lovelace",
+ "qryNr":"0",
+ "context":"Lovelace was born 10 December 1815 as the only legitimate child of the poet George, Lord Byron and his wife Anne Isabella Noel. All Byron's other children were born out of wedlock to other women. Byron separated from his wife a month after Ada was born and left England forever four months later, eventually dying of disease in the Greek War of Independence when Ada was eight years old. Ada's mother remained bitter towards Lord Byron and promoted Ada's interest in mathematics and logic in an effort to prevent her from developing what she saw as the insanity seen in her father, but Ada remained interested in him despite this (and was, upon her eventual death, buried next to him at her request).",
+ "candidates":["Ada_Lovelace", "Lord_Byron"]
+}]
+}
